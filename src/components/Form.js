@@ -10,7 +10,7 @@ export default function form({ todos, setTodos, inputText, setInputText }) {
         e.preventDefault();
         setTodos([
             {
-                text: inputText, completed: false, id: Math.random() * 100
+                text: inputText, completed: false, id: Math.random() * 1000
             },
             ...todos
         ])
