@@ -7,6 +7,10 @@ export default function TodoList() {
             <div className="todo-container">
                 <ul className="todo-list">
                     <Todo />
+                    <Todo />
+                    <Todo />
+                    <Todo />
+                    <Todo />
                 </ul>
             </div>
         </div>
