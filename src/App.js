@@ -14,7 +14,7 @@ function App() {
         <h1>Todo List</h1>
       </header>
       <Form todos={todos} setTodos={setTodos} setInputText={setInputText} inputText={inputText} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 }
@@ -22,4 +22,4 @@ function App() {
 export default App;
 
  
-// https://youtu.be/pCA4qpQDZD8?t=1757
+// https://youtu.be/pCA4qpQDZD8?t=3139
