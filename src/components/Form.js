@@ -9,10 +9,10 @@ export default function form({ todos, setTodos, inputText, setInputText }) {
     function submitTodoHandler(e) {
         e.preventDefault();
         setTodos([
+            ...todos,
             {
                 text: inputText, completed: false, id: Math.random() * 1000
-            },
-            ...todos
+            }
         ])
         setInputText("");
     }
