@@ -7,14 +7,12 @@ export default function todo({ todos, setTodos, todo, text }) {
     }
 
     function completeHandler() {
-        //   setTodos(todos.map(item => {
-        //       return item.id === todo.id ? {...item, item.completed = !item.completed}
-        //   }))
         setTodos(todos.map(item => {
             if (item.id === todo.id) {
                 return { ...item, completed: !item.completed }
             }
-            return todo;
+            
+            return item;
         }))
     }
 
