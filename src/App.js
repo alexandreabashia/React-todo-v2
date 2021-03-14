@@ -15,14 +15,12 @@ function App() {
   //Effect
   useEffect(() => {
     getLocalTodos();
-    console.log('1')
   }, []);
 
   //Effect 2
   useEffect(() => {
     filterHandler();
     saveLocalTodos();
-    console.log('2')
   }, [todos, status]);
 
   //LocalStorage Save 1
