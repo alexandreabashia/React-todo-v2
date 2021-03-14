@@ -12,21 +12,46 @@ function App() {
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
 
+  //Effect
+  useEffect(() => {
+    getLocalTodos();
+    console.log('1')
+  }, []);
+
+  //Effect 2
   useEffect(() => {
     filterHandler();
+    saveLocalTodos();
+    console.log('2')
   }, [todos, status]);
 
-  function filterHandler(){
-    switch(status) {
+  //LocalStorage Save 1
+  function saveLocalTodos() {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }
+
+  //LocalStorage Get 2
+  function getLocalTodos() {
+    if (localStorage.getItem("todos") === null) {
+      localStorage.setItem("todos", JSON.stringify([]))
+    } else {
+      let todoLocal = JSON.parse(localStorage.getItem("todos"));
+      setTodos(todoLocal)
+    }
+  }
+
+  //Filter
+  function filterHandler() {
+    switch (status) {
       case 'completed':
-      setFilteredTodos(todos.filter(todo => todo.completed === true))
-      break;
+        setFilteredTodos(todos.filter(todo => todo.completed === true))
+        break;
       case 'uncompleted':
-      setFilteredTodos(todos.filter(todo => todo.completed === false))
-      break;
-      default: 
-      setFilteredTodos(todos)
-      break;
+        setFilteredTodos(todos.filter(todo => todo.completed === false))
+        break;
+      default:
+        setFilteredTodos(todos)
+        break;
     }
   }
 
@@ -36,22 +61,22 @@ function App() {
       <header>
         <h1>Todo List</h1>
       </header>
-      <Form 
-        todos={todos} 
-        setTodos={setTodos} 
+      <Form
+        todos={todos}
+        setTodos={setTodos}
 
-        setInputText={setInputText} 
-        inputText={inputText} 
+        setInputText={setInputText}
+        inputText={inputText}
 
         setStatus={setStatus}
 
-        filteredTodos={filteredTodos} 
+        filteredTodos={filteredTodos}
         setFilteredTodos={setFilteredTodos}
-        />
+      />
 
-      <TodoList 
-        todos={todos} 
-        setTodos={setTodos} 
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
         filteredTodos={filteredTodos}
         filterHandler={filterHandler}
       />
