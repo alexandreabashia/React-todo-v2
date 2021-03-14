@@ -2,10 +2,11 @@ import React from 'react'
 
 export default function todo({ todos, setTodos, todo, text }) {
 
+    //1. Runs on: Delete button press
     function deleteHandler() {
         setTodos(todos.filter((el) => el.id !== todo.id))
     }
-
+    //2. Runs on: Completed button press
     function completeHandler() {
         setTodos(todos.map(item => {
             if (item.id === todo.id) {

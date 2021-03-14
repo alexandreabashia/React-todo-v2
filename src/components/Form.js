@@ -1,11 +1,14 @@
 import React from 'react'
 
-export default function form({ todos, setTodos, inputText, setInputText, status, setStatus }) {
+export default function form({ todos, setTodos, inputText, setInputText, status, setStatus, filteredTodos, setFilteredTodos }) {
 
+    //1. Runs on: everytime i enter text
     function inputTextHandler(e) {
         setInputText(e.target.value);
     }
 
+    
+    //2. Runs on: + Button click
     function submitTodoHandler(e) {
         e.preventDefault();
         setTodos([
@@ -17,8 +20,20 @@ export default function form({ todos, setTodos, inputText, setInputText, status,
         setInputText("");
     }
 
+    //3. Runs on: SELECT OPTION
     function statusHandler(e){
-        setStatus(e.target.value)
+        // setStatus(e.target.value)
+
+        setFilteredTodos(todos);
+        if (e.target.value === 'completed') {
+            setFilteredTodos(filteredTodos.filter(item => {
+                return item.completed === true;
+            }))
+        } else if (e.target.value === 'uncompleted') {
+            setFilteredTodos(filteredTodos.filter(item => {
+                return item.completed === false;
+            }))
+        }
     }
 
     return (
