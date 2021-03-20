@@ -20,7 +20,7 @@ export default function form({ todos, setTodos, inputText, setInputText, setStat
         setInputText("");
     }
 
-    //3. Runs on: SELECT OPTION
+    //3. Runs on: SELECT OPTION, All || Completed || Uncompleted
     function statusHandler(e){
         setStatus(e.target.value);
     }
